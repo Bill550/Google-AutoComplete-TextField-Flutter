@@ -33,6 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -71,14 +72,14 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: GooglePlaceAutoCompleteTextField(
         textEditingController: controller,
-        googleAPIKey:"YOUR_GOOGLE_API_KEY",
+        googleAPIKey: "",
         inputDecoration: InputDecoration(
           hintText: "Search your location",
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
         ),
         debounceTime: 400,
-        countries: ["in", "fr"],
+        countries: ["us"],
         isLatLngRequired: false,
         getPlaceDetailWithLatLng: (Prediction prediction) {
           print("placeDetails" + prediction.lat.toString());
@@ -86,8 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         itemClick: (Prediction prediction) {
           controller.text = prediction.description ?? "";
-          controller.selection = TextSelection.fromPosition(
-              TextPosition(offset: prediction.description?.length ?? 0));
+          controller.selection = TextSelection.fromPosition(TextPosition(offset: prediction.description?.length ?? 0));
         },
         seperatedBuilder: Divider(),
         containerHorizontalPadding: 10,
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   width: 7,
                 ),
-                Expanded(child: Text("${prediction.description??""}"))
+                Expanded(child: Text("${prediction.description ?? ""}"))
               ],
             ),
           );
