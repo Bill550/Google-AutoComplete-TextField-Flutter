@@ -348,6 +348,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
     setState(() {
       alPredictions.clear();
       isCrossBtn = false;
+      isSelected = false;
     });
 
     if (this._overlayEntry != null) {
