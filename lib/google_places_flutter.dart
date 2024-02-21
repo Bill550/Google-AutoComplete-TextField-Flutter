@@ -141,7 +141,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                   });
                   log("onSaved(newValue) 2: ");
                   log("onSaved(newValue) 2: $isSelected");
-                  removeOverlay();
+                  clearData();
                   Future.delayed(Duration(seconds: 1)).then((value) {
                     widget.onSubmit!(newValue);
                     log("onSaved(newValue) 2: ");
