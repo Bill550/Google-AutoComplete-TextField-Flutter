@@ -131,7 +131,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                   log("onSaved(newValue) 2: $isSelected");
                   setState(() {
                     newValue = value;
-                    isSelected = true;
+                    isSelected = false;
                   });
                   log("onSaved(newValue) 2: ");
                   log("onSaved(newValue) 2: $isSelected");
@@ -165,7 +165,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                   if (widget.isCrossBtnShown) {
                     isCrossBtn = string.isNotEmpty ? true : false;
                     setState(() {
-                      isSelected = false;
+                      isSelected = true;
                     });
                   }
                 },
@@ -273,7 +273,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                       borderRadius: BorderRadius.circular(8.0),
                       color: Color(0xffFFFFFF),
                       child: SizedBox(
-                        height: isSelected ? 0 : MediaQuery.of(context).size.height * 0.24,
+                        height: isSelected ? MediaQuery.of(context).size.height * 0.24 : 0,
                         child: ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
@@ -285,7 +285,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                                 if (index < alPredictions.length) {
                                   widget.itemClick!(selectedData);
                                   setState(() {
-                                    isSelected = true;
+                                    isSelected = false;
                                   });
 
                                   // if (widget.isLatLngRequired) return;
