@@ -164,9 +164,13 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                   subject.add(string);
                   if (widget.isCrossBtnShown) {
                     isCrossBtn = string.isNotEmpty ? true : false;
-                    setState(() {
+
+                    if (string.isNotEmpty) {
                       isSelected = true;
-                    });
+                    } else {
+                      isSelected = false;
+                    }
+                    setState(() {});
                   }
                 },
               ),
