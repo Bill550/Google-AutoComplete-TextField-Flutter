@@ -135,7 +135,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
                   });
                   log("onSaved(newValue) 2: ");
                   log("onSaved(newValue) 2: $isSelected");
-                  clearData();
+                  clearData(isClearTextField: false);
                   Future.delayed(Duration(seconds: 1)).then((value) {
                     widget.onSubmit!(newValue);
                     log("onSaved(newValue) 2: ");
@@ -343,8 +343,10 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
     return null;
   }
 
-  void clearData() {
-    widget.textEditingController.clear();
+  void clearData({bool? isClearTextField}) {
+    if (isClearTextField ?? true) {
+      widget.textEditingController.clear();
+    }
     if (_cancelToken?.isCancelled == false) {
       _cancelToken?.cancel();
     }
