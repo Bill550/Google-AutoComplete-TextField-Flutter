@@ -211,8 +211,6 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
 
     try {
       Response response = await _dio.get(url);
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-
       Map map = response.data;
       if (map.containsKey("error_message")) {
         throw response.data;
@@ -243,7 +241,6 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
       Overlay.of(context).insert(this._overlayEntry!);
     } catch (e) {
       var errorHandler = ErrorHandler.internal().handleError(e);
-      // _showSnackBar("${errorHandler.message}");
     }
   }
 
@@ -368,17 +365,6 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
     return (widget.textEditingController.text.isNotEmpty);
   }
 
-  _showSnackBar(String errorData) {
-    if (widget.showError) {
-      final snackBar = SnackBar(
-        content: Text("$errorData"),
-      );
-
-      // Find the ScaffoldMessenger in the widget tree
-      // and use it to show a SnackBar.
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
 }
 
 PlacesAutocompleteResponse parseResponse(Map responseBody) {
