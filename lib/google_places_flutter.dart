@@ -188,7 +188,7 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
 
   getLocation(String text) async {
     String url =
-        "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}&location=32.7767,-96.7970&radius=500000&strictbounds=true";
+        "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}&location=31.52195,-97.27005&radius=220000&strictbounds=true";
 
     if (widget.countries != null) {
       // in
@@ -364,7 +364,6 @@ class _GooglePlaceAutoCompleteTextFieldState extends State<GooglePlaceAutoComple
   _showCrossIconWidget() {
     return (widget.textEditingController.text.isNotEmpty);
   }
-
 }
 
 PlacesAutocompleteResponse parseResponse(Map responseBody) {
